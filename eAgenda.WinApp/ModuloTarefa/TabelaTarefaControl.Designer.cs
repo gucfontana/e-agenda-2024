@@ -1,6 +1,6 @@
-﻿namespace eAgenda.WinApp.ModuloContato
+﻿namespace eAgenda.WinApp.ModuloTarefa
 {
-    partial class ListagemContatoControl
+    partial class TabelaTarefaControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,33 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listContatos = new ListBox();
+            listTarefas = new ListView();
             SuspendLayout();
             // 
-            // listContatos
+            // listTarefas
             // 
-            listContatos.Dock = DockStyle.Fill;
-            listContatos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            listContatos.FormattingEnabled = true;
-            listContatos.ItemHeight = 20;
-            listContatos.Location = new Point(0, 0);
-            listContatos.Name = "listContatos";
-            listContatos.Size = new Size(551, 323);
-            listContatos.TabIndex = 0;
+            listTarefas.Dock = DockStyle.Fill;
+            listTarefas.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            listTarefas.Location = new Point(0, 0);
+            listTarefas.Name = "listTarefas";
+            listTarefas.Size = new Size(628, 367);
+            listTarefas.TabIndex = 0;
+            listTarefas.UseCompatibleStateImageBehavior = false;
             // 
-            // ListagemContatoControl
+            // TabelaTarefaControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(listContatos);
-            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Name = "ListagemContatoControl";
-            Size = new Size(551, 323);
+            Controls.Add(listTarefas);
+            Name = "TabelaTarefaControl";
+            Size = new Size(628, 367);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListBox listContatos;
+        private ListView listTarefas;
     }
 }

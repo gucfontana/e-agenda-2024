@@ -1,87 +1,79 @@
-﻿namespace eAgenda.ConsoleApp.Compartilhado
+﻿namespace eAgenda.ConsoleApp.Compartilhado;
+
+public abstract class RepositorioBase<T> where T : EntidadeBase
 {
-    public abstract class RepositorioBase<T> where T : EntidadeBase
+    protected int contadorId = 1;
+    protected List<T> registros = new();
+
+    public void Cadastrar(T novoRegistro)
     {
-        protected List<T> registros = new List<T>();
+        novoRegistro.Id = contadorId++;
 
-        protected int contadorId = 1;
+        registros.Add(novoRegistro);
+    }
 
-        public void Cadastrar(T novoRegistro)
-        {
-            novoRegistro.Id = contadorId++;
+    public bool Editar(int id, T novaEntidade)
+    {
+        novaEntidade.Id = id;
 
-            registros.Add(novoRegistro);
-        }
-
-        public bool Editar(int id, T novaEntidade)
-        {
-            novaEntidade.Id = id;
-
-            foreach (T entidade in registros)
+        foreach (var entidade in registros)
+            if (entidade == null)
             {
-                if (entidade == null)
-                    continue;
-
-                else if (entidade.Id == id)
-                {
-                    entidade.AtualizarRegistro(novaEntidade);
-
-                    return true;
-                }
             }
 
-            return false;
-        }
-
-        public bool Excluir(int id)
-        {
-            foreach (T entidade in registros)
+            else if (entidade.Id == id)
             {
-                if (entidade == null)
-                    continue;
+                entidade.AtualizarRegistro(novaEntidade);
 
-                else if (entidade.Id == id)
-                {
-                    registros.Remove(entidade);
-
-                    return true;
-                }
+                return true;
             }
 
-            return false;
-        }
+        return false;
+    }
 
-        public List<T> SelecionarTodos()
-        {
-            return registros;
-        }
-
-        public T SelecionarPorId(int id)
-        {
-            foreach (T e in registros)
+    public bool Excluir(int id)
+    {
+        foreach (var entidade in registros)
+            if (entidade == null)
             {
-                if (e == null)
-                    continue;
-
-                else if (e.Id == id)
-                    return e;
             }
 
-            return null;
-        }
-
-        public bool Existe(int id)
-        {
-            foreach (T e in registros)
+            else if (entidade.Id == id)
             {
-                if (e == null)
-                    continue;
+                registros.Remove(entidade);
 
-                else if (e.Id == id)
-                    return true;
+                return true;
             }
 
-            return false;
-        }
+        return false;
+    }
+
+    public List<T> SelecionarTodos()
+    {
+        return registros;
+    }
+
+    public T SelecionarPorId(int id)
+    {
+        foreach (var e in registros)
+            if (e == null)
+                continue;
+
+            else if (e.Id == id)
+                return e;
+
+        return null;
+    }
+
+    public bool Existe(int id)
+    {
+        foreach (var e in registros)
+            if (e == null)
+                continue;
+
+            else if (e.Id == id)
+                return true;
+
+        return false;
     }
 }

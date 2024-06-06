@@ -1,8 +1,7 @@
 ﻿using eAgenda.ConsoleApp.Compartilhado;
 
-namespace eAgenda.WinApp.ModuloContato
+namespace eAgenda.WinApp.ModuloContato;
+
+public class RepositorioContato : RepositorioBase<Contato>
 {
-    public class RepositorioContato : RepositorioBase<Contato>
-    {
-    }
 }

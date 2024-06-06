@@ -1,6 +1,6 @@
 ﻿namespace eAgenda.WinApp.ModuloContato
 {
-    partial class ListagemContatoControl
+    partial class TabelaContatoControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,33 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listContatos = new ListBox();
+            grid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)grid).BeginInit();
             SuspendLayout();
             // 
-            // listContatos
+            // grid
             // 
-            listContatos.Dock = DockStyle.Fill;
-            listContatos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            listContatos.FormattingEnabled = true;
-            listContatos.ItemHeight = 20;
-            listContatos.Location = new Point(0, 0);
-            listContatos.Name = "listContatos";
-            listContatos.Size = new Size(551, 323);
-            listContatos.TabIndex = 0;
+            grid.AllowUserToAddRows = false;
+            grid.AllowUserToDeleteRows = false;
+            grid.AllowUserToResizeColumns = false;
+            grid.AllowUserToResizeRows = false;
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grid.Dock = DockStyle.Fill;
+            grid.Location = new Point(0, 0);
+            grid.Name = "grid";
+            grid.ReadOnly = true;
+            grid.RowHeadersVisible = false;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.Size = new Size(553, 307);
+            grid.TabIndex = 0;
             // 
-            // ListagemContatoControl
+            // TabelaContatoControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(listContatos);
-            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Name = "ListagemContatoControl";
-            Size = new Size(551, 323);
+            Controls.Add(grid);
+            Name = "TabelaContatoControl";
+            Size = new Size(553, 307);
+            ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListBox listContatos;
+        private DataGridView grid;
     }
 }

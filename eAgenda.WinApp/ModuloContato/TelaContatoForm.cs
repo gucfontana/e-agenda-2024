@@ -1,24 +1,45 @@
-﻿namespace eAgenda.WinApp.ModuloContato
+﻿namespace eAgenda.WinApp.ModuloContato;
+
+public partial class TelaContatoForm : Form
 {
-    public partial class TelaContatoForm : Form
+    private Contato contato;
+
+    public TelaContatoForm()
     {
-        private Contato contato;
-        public Contato Contato { get { return contato; } }
+        InitializeComponent();
+    }
 
-        public TelaContatoForm()
+    public Contato Contato
+    {
+        set
         {
-            InitializeComponent();
+            txtId.Text = value.Id.ToString();
+            txtNome.Text = value.Nome;
+            txtEmail.Text = value.Email;
+            txtTelefone.Text = value.Telefone;
+            txtCargo.Text = value.Cargo;
+            txtEmpresa.Text = value.Empresa;
         }
+        get => contato;
+    }
 
-        private void btnGravar_Click(object sender, EventArgs e)
+    private void btnGravar_Click(object sender, EventArgs e)
+    {
+        var nome = txtNome.Text;
+        var email = txtEmail.Text;
+        var telefone = txtTelefone.Text;
+        var cargo = txtCargo.Text;
+        var empresa = txtEmpresa.Text;
+
+        contato = new Contato(nome, telefone, email, empresa, cargo);
+
+        var erros = contato.Validar();
+
+        if (erros.Count > 0)
         {
-            string nome = txtNome.Text;
-            string email = txtEmail.Text;
-            string telefone = txtTelefone.Text;
-            string cargo = txtCargo.Text;
-            string empresa = txtEmpresa.Text;
+            TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
 
-            contato = new Contato(nome, telefone, email, empresa, cargo);
+            DialogResult = DialogResult.None;
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿namespace eAgenda.ConsoleApp.Compartilhado
+﻿namespace eAgenda.ConsoleApp.Compartilhado;
+
+public abstract class EntidadeBase
 {
-    public abstract class EntidadeBase
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public abstract List<string> Validar();
+    public abstract List<string> Validar();
 
-        public abstract void AtualizarRegistro(EntidadeBase novoRegistro);
-    }
+    public abstract void AtualizarRegistro(EntidadeBase novoRegistro);
 }
